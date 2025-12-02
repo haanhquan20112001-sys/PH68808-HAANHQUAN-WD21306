@@ -1,60 +1,74 @@
-// CConsoleApplication.c : file nay chua 'main' function. 
+﻿// CConsoleApplication.c : file nay chua 'main' function. 
 // Chuong trinh phan mem Bat dau thuc thi & Ket thuc o day.
 
 #include <stdio.h>
+#include <math.h>
+#include <string.h>
+#include <stdlib.h>
+#include <time.h>
+// roi
 void kiemTraSoNguyen()
 {
-    double soCanKiemTra;
-    int luaChon;
-    do
-    {
-        printf("Nhap so can kiem tra: ");
-        scanf_s("%lf", &soCanKiemTra);
-        // Co muon tiep tuc chuong trinh khong
-        printf("Ban co muon tiep tuc khong (1: Co, 0: Khong): ");
-        scanf_s("%d", &luaChon);
-        printf("----------------------------------------------------\n");
-    } while (luaChon == 1);
+    printf("\nBan da chon Chuc nang so 1\n");
+    int x, i, count = 0;
+    printf("Nhap x: ");
+    scanf_s("%d", &x);
+    if (x == (int)x) {
+        printf("\n%d la so nguyen", x);
+        for (i = 2; i < x; i++) {
+            if (x % i == 0) {
+                count++;
+            }
+        }
+        if (count == 0) {
+            printf("\n%d la so nguyen to", x);
+        }
+        else {
+            printf("\n%d khong phai so nguyen to", x);
+        }
+        for (i = 1; i < x; i++) {
+            if (i * i == x) {
+                printf("\n%d la so chinh phuong", x);
+                break;
+            }
+        }
+    }
 }
-void uocChungvaBoiChung()
+// chua 
+void uocChungvaBoiChung() 
 {
-    double soThuNhat, soThuHai, uocSoChung, boiSoChung;
-    int luaChon;
-    do
-    {
-        printf("Nhap so thu nhat: ");
-        scanf_s("%lf", &soThuNhat);
-        printf("Nhap so thu hai: ");
-        scanf_s("%lf", &soThuHai);
-        // Co muon tiep tuc chuong trinh khong 
-        printf("Ban co muon tiep tuc khong (1: Co, 0: Khong): ");
-        scanf_s("%d", &luaChon);
-        printf("----------------------------------------------------\n");
-    } while (luaChon == 1);
+
+
 }
+// roi
 void tinhTienQuanKaraoke()
 {
-    double gioBatDau, gioKetThuc, soGioThue, tienThanhToan;
-    int luaChon;
-    do
     {
-        printf("Nhap gio bat dau: ");
-        scanf_s("%lf", &gioBatDau);
+        printf("\nBan da chon Chuc nang so 3\n");
+        int bd, kt, time, addt;
+        float pay, addm;
+        printf("\nNhap gio bat dau: ");
+        scanf_s("%d", &bd);
         printf("Nhap gio ket thuc: ");
-        scanf_s("%lf", &gioKetThuc);
-        soGioThue = gioKetThuc - gioBatDau;
-        // Co muon tiep tuc chuong trinh khong
-        printf("Ban co muon tiep tuc khong (1: Co, 0: Khong): ");
-        scanf_s("%d", &luaChon);
-        printf("----------------------------------------------------\n");
-    } while (luaChon == 1);
+        scanf_s("%d", &kt);
+        time = kt - bd;
+        if (time <= 3) {
+            pay = time * 150000;
+        }
+        else {
+            addt = time - 3;
+            addm = addt * 150000 * 0.7;
+            pay = 3 * 150000 + addm;
+        }
+        if (bd >= 14 && bd <= 17) {
+            pay = pay * 0.9;
+        }
+        printf("Tong so tien can thanh toan la: %.2f", pay);
+    }
 }
 void tinhTienDien()
 {
     double soDienTieuThu, tienDien, b1 = 1678, b2 = 1734, b3 = 2014, b4 = 2536, b5 = 2834, b6 = 2927;
-    int luaChon;
-    do
-    {
         printf("Nhap so dien tieu thu(kWh): ");
         scanf_s("%lf", &soDienTieuThu);
         if (soDienTieuThu >= 0)
@@ -89,102 +103,172 @@ void tinhTienDien()
         {
             printf("So dien tieu thu khong hop le!\n");
         }
-        // Co muon tiep tuc chuong trinh khong
-        printf("Ban co muon tiep tuc khong (1: Co, 0: Khong): ");
-        scanf_s("%d", &luaChon);
-        printf("----------------------------------------------------\n");
-    } while (luaChon == 1);
 }
-//Done
 void doiTien()
 {
-    double soTienCanDoi;
-    int luaChon;
-    do
+#define MAX 12
+    int doitien();
     {
+        printf("\nBan da chon Chuc nang so 5\n");
+        int loaitien[MAX] = { 500, 200, 100, 50, 20, 10, 5, 2, 1 };
+        int sotien, soluong;
+        printf("\nNhap menh gia tien can doi: ");
+        scanf_s("%d", &sotien);
 
-        printf("Ban co muon tiep tuc khong (1: Co, 0: Khong): ");
-        scanf_s("%d", &luaChon);
-        printf("----------------------------------------------------\n");
-    } while (luaChon == 1);
+        for (int i = 0; i < 9; i++)   // mảng chỉ có 9 phần tử!
+        {
+            soluong = sotien / loaitien[i];
+            sotien = sotien % loaitien[i];
+            printf("\nCo %d to tien %d dong", soluong, loaitien[i]);
+        }
+        return 0;
+    }
+
 }
 void tinhLaiSuatVayNganHang()
 {
-    int luaChon;
-    do
     {
+        printf("\nBan da chon Chuc nang so 6\n");
+        int i;
+        int kyHan = 12;
+        float sotien, laiSuat, tong = 0.0; // Initialize tong
+        printf("\nBan muon vay bao nhieu: ");
+        scanf_s("%f", &sotien);
+        laiSuat = 0.05;
 
-        printf("Ban co muon tiep tuc khong (1: Co, 0: Khong): ");
-        scanf_s("%d", &luaChon);
-        printf("----------------------------------------------------\n");
-    } while (luaChon == 1);
+        float gocHangThang = sotien / kyHan;
+        printf("\nSo tien can tra hang thang: %.2f", gocHangThang); // Added format specifier
+        printf("\nKy han\tLai phai tra\tGoc phai tra\tTien phai tra\tTien con lai");
+        for (i = 1; i <= kyHan; i++) { // Corrected variable name
+            float laiHangThang = sotien * laiSuat;
+            float tienHangThang = laiHangThang + gocHangThang;
+            sotien = sotien - gocHangThang;
+            tong += tienHangThang;
+            printf("\n %d\t%.0f\t\t%.0f\t\t%.0f\t\t%.0f\n", i, laiHangThang, gocHangThang, tienHangThang, sotien);
+        }
+        printf("\nTong tien tra sau 12 thang la: %.0f VND", tong);
+    }
 }
 void vayTienMuaXeTraGop()
 {
-    int luaChon;
-    do
     {
+        printf("\nBan da chon Chuc nang so 7\n");
+        float phanTramVay;
+        printf("Nhap phan tram vay (0 -> 1): ");
+        scanf_s("%f", &phanTramVay);
 
-        printf("Ban co muon tiep tuc khong (1: Co, 0: Khong): ");
-        scanf_s("%d", &luaChon);
-        printf("----------------------------------------------------\n");
-    } while (luaChon == 1);
+        double phanTramTraTruoc = 1.0 - phanTramVay;
+        double sotien = 500000000;
+        double laiSuat = 0.072 / 24;
+        int kyHan = 24;
+
+        double tienTraTruoc = sotien * phanTramTraTruoc;
+        sotien = sotien - tienTraTruoc;
+        double gocHangThang = sotien / kyHan;
+
+        printf("\nSo tien tra truoc la: %.0lf VND\n", tienTraTruoc);
+        printf("\nSo tien phai tra hang thang:");
+        printf("\nKy han\tLai phai tra\tGoc phan tra\tSo tien phai tra\tSo tien con lai");
+        for (int i = 1; i <= kyHan; i++) { // Changed 'thoiHan' to 'kyHan'
+            double traLai = sotien * laiSuat;
+            double tienHangThang = traLai + gocHangThang;
+            sotien = sotien - gocHangThang;
+            printf("\n  %d\t%.0lf\t\t%.0lf\t%.0lf\t\t%.0lf\n", i, traLai, gocHangThang, tienHangThang, sotien);
+        }
+    }
 }
-void sapXepThongTinSinhVien()
+// chua
+void sapXepThongTinSinhVien() 
 {
-    int luaChon;
-    do
-    {
 
-        printf("Ban co muon tiep tuc khong (1: Co, 0: Khong): ");
-        scanf_s("%d", &luaChon);
-        printf("----------------------------------------------------\n");
-    } while (luaChon == 1);
+
 }
 void gameFpolyLott()
 {
-    int luaChon;
-    do
     {
-
-        printf("Ban co muon tiep tuc khong (1: Co, 0: Khong): ");
-        scanf_s("%d", &luaChon);
-        printf("----------------------------------------------------\n");
-    } while (luaChon == 1);
+        printf("\nBan da chon Chuc nang so 9\n");
+        int i, so1, so2, count = 0;
+        int kq, ketqua[2];
+        printf("Nhap so 1: ");
+        scanf_s("%d", &so1);
+        printf("Nhap so 2: ");
+        scanf_s("%d", &so2);
+        srand(time(0));
+        for (i = 0; i < 2; i++) {
+            kq = 1 + rand() % 15;
+            ketqua[i] = kq;
+        }
+        for (i = 0; i < 2; i++) {
+            if (so1 == ketqua[i]) {
+                count++;
+            }
+            if (so2 == ketqua[i]) {
+                count++;
+            }
+        }
+        printf("\nKet qua so xo hom nay la!");
+        printf("\nSo 1 = %d", ketqua[0]);
+        printf("\nSo 2 = %d", ketqua[1]);
+        if (count == 2) {
+            printf("\nChuc mung ban da trung giai dac biet!");
+            printf("\nGia tri giai thuong: 65 ti VND");
+        }
+        else if (count == 1) {
+            printf("\nChuc mung ban da trung giai nhat!");
+            printf("\nGia tri giai thuong: 500 trieu VND");
+        }
+        else {
+            printf("\nCHUC BAN MAY MAN LAN SAU!");
+        }
+    } {
+        printf("\nBan da chon Chuc nang so 9\n");
+        int i, so1, so2, count = 0;
+        int kq, ketqua[2];
+        printf("Nhap so 1: ");
+        scanf_s("%d", &so1);
+        printf("Nhap so 2: ");
+        scanf_s("%d", &so2);
+        srand(time(0));
+        for (i = 0; i < 2; i++) {
+            kq = 1 + rand() % 15;
+            ketqua[i] = kq;
+        }
+        for (i = 0; i < 2; i++) {
+            if (so1 == ketqua[i]) {
+                count++;
+            }
+            if (so2 == ketqua[i]) {
+                count++;
+            }
+        }
+        printf("\nKet qua so xo hom nay la!");
+        printf("\nSo 1 = %d", ketqua[0]);
+        printf("\nSo 2 = %d", ketqua[1]);
+        if (count == 2) {
+            printf("\nChuc mung ban da trung giai dac biet!");
+            printf("\nGia tri giai thuong: 65 ti VND");
+        }
+        else if (count == 1) {
+            printf("\nChuc mung ban da trung giai nhat!");
+            printf("\nGia tri giai thuong: 500 trieu VND");
+        }
+        else {
+            printf("\nCHUC BAN MAY MAN LAN SAU!");
+        }
+    }
 }
-void tinhToanPhanSo()
+void tinhToanPhanSo() 
 {
-    int luaChon;
-    do
-    {
 
-        printf("Ban co muon tiep tuc khong (1: Co, 0: Khong): ");
-        scanf_s("%d", &luaChon);
-        printf("----------------------------------------------------\n");
-    } while (luaChon == 1);
+
 }
 
-int main()
+void hamVongLap(int n) 
 {
-    int chon;
-    do
+    int luaChon = 1;
+    while (luaChon == 1)
     {
-        printf("In Menu\n");
-        printf("0. Thoat\n");
-        printf("1. Kiem tra so nguyen\n");
-        printf("2. Tim Uoc so chung va Boi so chung cua 2 so\n");
-        printf("3. Chuong trinh tinh tien cho quan Karaoke\n");
-        printf("4. Tinh tien dien\n");
-        printf("5. Chuc nang doi tien\n");
-        printf("6. Tinh lai suat vay ngan hang vay tra gop\n");
-        printf("7. Vay tien mua xe tra gop\n");
-        printf("8. Sap xep thong tin sinh vien\n");
-        printf("9. Game FPOLY-LOTT\n");
-        printf("10. Tinh toan phan so\n");
-        printf("Moi chon CN [0-10]: ");
-        scanf_s("%d", &chon);
-        printf("----------------------------------------------------\n");
-        switch (chon)
+        switch (n)
         {
         case 1:
             kiemTraSoNguyen();
@@ -217,7 +301,32 @@ int main()
             tinhToanPhanSo();
             break;
         }
-    } while (chon != 0);
+        printf("\nBan co muon tiep tuc khong (1: Co, 0: Khong): ");
+        scanf_s("%d", &luaChon);
+        printf("----------------------------------------------------\n");
+    }
+}
+int main()
+{
+    int n;
+    do
+    {
+        printf("\nIn Menu\n");
+        printf("0. Thoat\n");
+        printf("1. Kiem tra so nguyen\n");
+        printf("2. Tim Uoc so chung va Boi so chung cua 2 so\n");
+        printf("3. Chuong trinh tinh tien cho quan Karaoke\n");
+        printf("4. Tinh tien dien\n");
+        printf("5. Chuc nang doi tien\n");
+        printf("6. Tinh lai suat vay ngan hang vay tra gop\n");
+        printf("7. Vay tien mua xe tra gop\n");
+        printf("8. Sap xep thong tin sinh vien\n");
+        printf("9. Game FPOLY-LOTT\n");
+        printf("10. Tinh toan phan so\n");
+        printf("Moi chon CN [0-10]: ");
+        scanf_s("%d", &n);
+        hamVongLap(n);
+    } while (n != 0);
 }
 
 // Debug/Run chuong trinh: bam "F5" hoac "Debug > Start Debugging" tren menu
