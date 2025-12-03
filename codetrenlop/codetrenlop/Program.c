@@ -2,9 +2,6 @@
 // Chuong trinh phan mem Bat dau thuc thi & Ket thuc o day.
 #include <math.h>
 #include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <time.h>
 void demoMang2Chieu() 
 {
     int array[2][3];
@@ -25,9 +22,31 @@ void demoMang2Chieu()
 		printf("\n");
 	}
 }
+void demoSetring()
+{
+    // string 
+    char name[50] = "A quan";//{ 'A', 'q', 'u', 'a', 'u' };"A quan"
+    //gest(name);
+    //fgest(name);
+   
+    while (getchar() != '\n') 
+    {
+        printf("%s", getchar());
+    }
+
+    printf("nhap ten cua ban: ");
+    fgets(name, sizeof(name), stdin);
+    // xuat du lieu = for + printf
+    for ( int i = 0; i < 3; i++)
+    {
+        printf("%c", name[i]);
+	}
+	printf("\n");
+	//puts(name);
+}
 int main()
 {
-    demoMang2Chieu();
+    demoSetring();
 }
 
 // Debug/Run chuong trinh: bam "F5" hoac "Debug > Start Debugging" tren menu
