@@ -1,11 +1,33 @@
 // CConsoleApplication.c : file nay chua 'main' function. 
 // Chuong trinh phan mem Bat dau thuc thi & Ket thuc o day.
-
+#include <math.h>
 #include <stdio.h>
-
+#include <string.h>
+#include <stdlib.h>
+#include <time.h>
+void demoMang2Chieu() 
+{
+    int array[2][3];
+    for (int i = 0; i < 2; i++) 
+    {
+        for(int j = 0; j < 3; j++) 
+        {
+            printf("Nhap phan tu [%d][%d]: ", i, j);
+            scanf_s("%d", &array[i][j]);
+        }
+	}
+    for(int i = 0; i < 2; i++) 
+    {
+        for(int j = 0; j < 3; j++) 
+        {
+            printf("%d, ", array[i][j]);
+        }
+		printf("\n");
+	}
+}
 int main()
 {
-    printf("Hi there!\n");
+    demoMang2Chieu();
 }
 
 // Debug/Run chuong trinh: bam "F5" hoac "Debug > Start Debugging" tren menu
