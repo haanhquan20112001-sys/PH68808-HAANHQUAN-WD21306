@@ -34,13 +34,38 @@ void kiemTraSoNguyen()
         }
     }
 }
-// chua 
 void uocChungvaBoiChung() 
 {
+    printf("\n => Tim uoc chung va boi chung cua 2 so\n");
+    int x, y, a, b, UCLN, BSCNN;
 
+    // Nhập 2 số nguyên
+    printf("Nhap so thu nhat: ");
+    scanf_s("%d", &x);
+    printf("Nhap so thu hai: ");
+    scanf_s("%d", &y);
 
+    a = x;
+    b = y;
+
+    // Tính UCLN  bằng thuật toán Euclid
+    while (a != b) {
+        if (a > b)
+            a = a - b;
+        else
+            b = b - a;
+    }
+    UCLN = a;
+
+    // Tính BSCNN
+    BSCNN = (x * y) / UCLN;
+
+    // Xuất kết quả
+    printf("Uoc so chung lon nhat  cua %d và %d la: %d\n", x, y, UCLN);
+    printf("Boi so chung nho nhat cua %d và %d la: %d\n", x, y, BSCNN);
+
+    return 0;
 }
-// roi
 void tinhTienQuanKaraoke()
 {
     {
@@ -183,6 +208,7 @@ void sapXepThongTinSinhVien()
 
 
 }
+// roi
 void gameFpolyLott()
 {
     {
@@ -220,43 +246,9 @@ void gameFpolyLott()
         else {
             printf("\nCHUC BAN MAY MAN LAN SAU!");
         }
-    } {
-        printf("\nBan da chon Chuc nang so 9\n");
-        int i, so1, so2, count = 0;
-        int kq, ketqua[2];
-        printf("Nhap so 1: ");
-        scanf_s("%d", &so1);
-        printf("Nhap so 2: ");
-        scanf_s("%d", &so2);
-        srand(time(0));
-        for (i = 0; i < 2; i++) {
-            kq = 1 + rand() % 15;
-            ketqua[i] = kq;
-        }
-        for (i = 0; i < 2; i++) {
-            if (so1 == ketqua[i]) {
-                count++;
-            }
-            if (so2 == ketqua[i]) {
-                count++;
-            }
-        }
-        printf("\nKet qua so xo hom nay la!");
-        printf("\nSo 1 = %d", ketqua[0]);
-        printf("\nSo 2 = %d", ketqua[1]);
-        if (count == 2) {
-            printf("\nChuc mung ban da trung giai dac biet!");
-            printf("\nGia tri giai thuong: 65 ti VND");
-        }
-        else if (count == 1) {
-            printf("\nChuc mung ban da trung giai nhat!");
-            printf("\nGia tri giai thuong: 500 trieu VND");
-        }
-        else {
-            printf("\nCHUC BAN MAY MAN LAN SAU!");
-        }
-    }
+    } 
 }
+// chua
 void tinhToanPhanSo() 
 {
 
