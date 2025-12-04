@@ -6,6 +6,12 @@
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
+struct SinhVien 
+{
+    char ten[50];
+    float diem;
+    char hocLuc[20];
+};
 // roi
 void kiemTraSoNguyen()
 {
@@ -205,10 +211,63 @@ void vayTienMuaXeTraGop()
 // chua
 void sapXepThongTinSinhVien() 
 {
-   
+        int chon;
+        do {
+            printf(" Thuc thi sap xep sinh vien  \n");
+            int n;
+            struct SinhVien sv[100];
+
+            do {
+                printf("Nhap so luong sinh vien (1-100): ");
+                scanf_s("%d", &n);
+                if (n < 1 || n > 100)
+                    printf("So luong khong hop le. Moi nhap lai.\n");
+            } while (n < 1 || n > 100);
+
+            getchar();
+            for (int i = 0; i < n; i++) {
+                printf("\nNhap thong tin sinh vien thu %d\n", i + 1);
+
+                printf("Ho ten: ");
+                fgets(sv[i].ten, sizeof(sv[i].ten), stdin);
+                sv[i].ten[strcspn(sv[i].ten, "\n")] = '\0';
+
+                printf("Diem: ");
+                scanf_s("%f", &sv[i].diem);
+                getchar();
+                if (sv[i].diem >= 9.0)
+                    strcpy_s(sv[i].hocLuc, sizeof(sv[i].hocLuc), "Xuat sac");
+                else if (sv[i].diem >= 8.0)
+                    strcpy_s(sv[i].hocLuc, sizeof(sv[i].hocLuc), "Gioi");
+                else if (sv[i].diem >= 6.5)
+                    strcpy_s(sv[i].hocLuc, sizeof(sv[i].hocLuc), "Kha");
+                else if (sv[i].diem >= 5.0)
+                    strcpy_s(sv[i].hocLuc, sizeof(sv[i].hocLuc), "Trung binh");
+                else
+                    strcpy_s(sv[i].hocLuc, sizeof(sv[i].hocLuc), "Yeu");
+            }
+
+            for (int i = 0; i < n - 1; i++) {
+                for (int j = i + 1; j < n; j++) {
+                    if (sv[i].diem < sv[j].diem) {
+                        struct SinhVien tmp = sv[i];
+                        sv[i] = sv[j];
+                        sv[j] = tmp;
+                    }
+                }
+            }
+
+            printf("\n===== DANH SACH SINH VIEN SAU KHI SAP XEP =====\n");
+            printf("%-25s %-10s %-15s\n", "Ho ten", "Diem", "Hoc luc");
+            for (int i = 0; i < n; i++) {
+                printf("%-25s %-10.2f %-15s\n", sv[i].ten, sv[i].diem, sv[i].hocLuc);
+            }
+            printf("Tiep tuc chuc nang [1|khac]: ");
+            scanf_s("%d", &chon);
+            printf("---------------------------\n");
+        } while (chon == 1);
 
 }
-
 void gameFpolyLott()
 {
     {
