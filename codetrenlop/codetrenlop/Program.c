@@ -2,6 +2,7 @@
 // Chuong trinh phan mem Bat dau thuc thi & Ket thuc o day.
 #include <math.h>
 #include <stdio.h>
+#include <string.h>
 void demoMang2Chieu() 
 {
     int array[2][3];
@@ -43,10 +44,63 @@ void demoSetring()
 	}
 	printf("\n");
 	//puts(name);
+    printf("string length: ");
+    printf("%d", strlen(name) - 1);
+    printf("\n");
+    printf("string compare the same as: ");
+    printf("%d", strcmp("aBc", "aBc"));
+    printf("\n");
+    printf("string compare less than: ");
+    printf("%d", strcmp("A", "C"));
+    printf("\n");
+    printf("string compare less than: ");
+    printf("%d", strcmp("C", "A"));
+    printf("\n");
+     
+    printf("string reverse (encryption): ");
+    printf("%s", strrev(name));
+    printf("\n");
+    printf("string reverse (decryption)");
+    printf("%s", strrev(name));
+    printf("string lowen: ");
+    printf("%s", strlwr(name));
+    printf("\n");
+    printf("string upper: ");
+    printf("%s", strupr(name));
+    printf("\n");
+    printf("find string in string: ");
+    if (strstr(name, "A") != NULL) 
+    {
+        printf("found: ");
+		printf("%s", strstr(name, "A"));
+    }
+    else 
+    {
+        printf("NOT FOUND");
+    }
 }
+
 int main()
 {
-    demoSetring();
+    int chon;
+    printf(">>>> Menu <<<<<");
+    printf("0.Thoat");
+    printf("\n1.Chuc nang 2 chieu");
+    printf("\n2.demoString\n");
+
+    scanf_s("%d", &chon);
+    switch (chon)
+    {
+    case 1:
+        demoMang2Chieu();
+        break;
+    case 2:
+        demoSetring();
+        break;
+    default:
+        printf("Khong co trong Menu");
+        break;
+    }
 }
 
 // Debug/Run chuong trinh: bam "F5" hoac "Debug > Start Debugging" tren menu

@@ -208,7 +208,6 @@ void vayTienMuaXeTraGop()
         }
     }
 }
-// chua
 void sapXepThongTinSinhVien() 
 {
         int chon;
